@@ -31,16 +31,30 @@ def generate_plan(user_input: str) -> dict:
     model = genai.GenerativeModel("models/gemini-2.5-flash")
 
     prompt = f"""
-You are an agent planner.
-Given the user request, produce a STRICT JSON object with:
-- goal (string)
-- steps (list of strings)
-- proposed_tool (string)
-- tool_input (string)
+You are an agentic AI planner.
 
-User request:
+Rules:
+- You MUST output valid JSON only.
+- Do NOT include explanations outside JSON.
+- proposed_tool must be one of:
+  - perform_task
+  - shell
+  - filesystem_delete
+- If unsure, default to "perform_task".
+
+User goal:
 {user_input}
+
+Respond in this exact JSON format:
+
+{{
+  "goal": "<summary>",
+  "steps": ["step 1", "step 2"],
+  "proposed_tool": "perform_task",
+  "tool_input": "<string or object>"
+}}
 """
+
 
     response = model.generate_content(prompt)
 
@@ -51,3 +65,4 @@ User request:
     json_text = text[start:end]
 
     return json.loads(json_text)
+
