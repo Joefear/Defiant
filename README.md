@@ -7,6 +7,8 @@ This repository contains:
 - A runnable **Guardrail service** (FastAPI)
 - A **Gemini-powered agent demo** that calls Guardrail before executing tasks
 - A complete **hackathon demo flow** with audit logs and deny enforcement
+- A fully implemented agent under `src/` (planned with Gemini, enforced by Guardrail)
+
 
 ---
 
