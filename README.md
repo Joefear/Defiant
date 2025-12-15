@@ -1,42 +1,54 @@
-# Agentic AI App Hackathon Template
+# Defiant Guardrail — Agentic AI Security Middleware (Gemini Hackathon)
 
-Welcome! This repository is your starting point for the **Agentic AI App Hackathon**. It includes:
+Defiant Guardrail is a **policy-driven AI security layer** that protects agentic systems from
+credential leakage, unsafe tool use, and policy violations — without modifying the model itself.
 
-- A consistent folder structure  
-- An environment spec (`environment.yml` or `Dockerfile`)  
-- Documentation placeholders to explain your design and demo
+This repository contains:
+- A runnable **Guardrail service** (FastAPI)
+- A **Gemini-powered agent demo** that calls Guardrail before executing tasks
+- A complete **hackathon demo flow** with audit logs and deny enforcement
 
-## 📋 Submission Checklist
+---
 
-- [ ] All code in `src/` runs without errors  
-- [ ] `ARCHITECTURE.md` contains a clear diagram sketch and explanation  
-- [ ] `EXPLANATION.md` covers planning, tool use, memory, and limitations  
-- [ ] `DEMO.md` links to a 3–5 min video with timestamped highlights  
+## 🚨 The Problem
+
+Agentic AI systems frequently:
+- Leak API keys and credentials
+- Execute unsafe tools
+- Violate enterprise or compliance rules
+- Behave inconsistently across apps (CLI, web, API, bots)
+
+Traditional solutions require custom middleware per app.
+
+**Defiant Guardrail solves this with a single policy-based service** any agent can call.
+
+---
+
+## 🧠 What Guardrail Does
+
+- Evaluates agent intent **before execution**
+- Enforces YAML-based policies
+- Blocks disallowed phrases, tools, and actions
+- Produces **audit logs** for every decision
+- Works with Gemini or any LLM
+
+---
+
+## 🏗️ Architecture (High-Level)
+
+    User Input
+       ↓
+    Agent (Gemini)
+       ↓
+    Guardrail /v1/evaluate
+       ↓
+    Allow → Execute Tool
+    Deny  → Block + Log
 
 
-## 🚀 Getting Started
-
-1. **Clone / Fork** this template.  Very Important. Fork Name MUST be the same name as the teamn name
-
-
-## 📂 Folder Layout
-
-![Folder Layout Diagram](images/folder-githb.png)
-
-
-
-## 🏅 Judging Criteria
-
-- **Technical Excellence **  
-  This criterion evaluates the robustness, functionality, and overall quality of the technical implementation. Judges will assess the code's efficiency, the absence of critical bugs, and the successful execution of the project's core features.
-
-- **Solution Architecture & Documentation **  
-  This focuses on the clarity, maintainability, and thoughtful design of the project's architecture. This includes assessing the organization and readability of the codebase, as well as the comprehensiveness and conciseness of documentation (e.g., GitHub README, inline comments) that enables others to understand and potentially reproduce or extend the solution.
-
-- **Innovative Gemini Integration **  
-  This criterion specifically assesses how effectively and creatively the Google Gemini API has been incorporated into the solution. Judges will look for novel applications, efficient use of Gemini's capabilities, and the impact it has on the project's functionality or user experience. You are welcome to use additional Google products.
-
-- **Societal Impact & Novelty **  
-  This evaluates the project's potential to address a meaningful problem, contribute positively to society, or offer a genuinely innovative and unique solution. Judges will consider the originality of the idea, its potential real‑world applicability, and its ability to solve a challenge in a new or impactful way.
-
+Guardrail runs as a standalone service and can protect:
+- CLI agents
+- Web apps
+- APIs
+- MCP-compatible tools (future extension)
 
