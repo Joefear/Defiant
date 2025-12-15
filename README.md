@@ -52,3 +52,11 @@ Guardrail runs as a standalone service and can protect:
 - APIs
 - MCP-compatible tools (future extension)
 
+## Quick Start (Demo)
+
+1. Watch the demo video linked in `DEMO.md` for a full walkthrough.
+2. Start the Guardrail service (FastAPI).
+3. Run the demo agent, which calls Guardrail before executing tasks.
+4. Observe allow/deny decisions enforced by policy in real time.
+
+The demo video is the authoritative reference for expected behavior.
