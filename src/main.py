@@ -1,7 +1,11 @@
+from dotenv import load_dotenv
 from planner import generate_plan
 
 
 def main():
+    # Load environment variables from .env
+    load_dotenv()
+
     user_input = input("Enter a task for the agent: ")
 
     plan = generate_plan(user_input)
